@@ -7,7 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bde88a33-5f86-486e-8b1e-ee14e0970a5e" name="Changes" comment="created project" />
+    <list default="true" id="bde88a33-5f86-486e-8b1e-ee14e0970a5e" name="Changes" comment="created project">
+      <change afterPath="$PROJECT_DIR$/Mockbuster/book.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mockbuster/dvd.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mockbuster/library.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mockbuster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mockbuster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mockbuster/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mockbuster/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mockbuster/item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mockbuster/item.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +40,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2q9WcmKVIlAaYv0cg8x3Fj6h2wz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -79,6 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1734075353819</updated>
       <workItem from="1734075355393" duration="717000" />
+      <workItem from="1734077576915" duration="1417000" />
     </task>
     <task id="LOCAL-00001" summary="created project">
       <option name="closed" value="true" />
