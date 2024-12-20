@@ -1,6 +1,4 @@
 namespace Mockbuster;
-
-
 class user
 {
     
@@ -10,11 +8,13 @@ class user
     {
         this.name = name;
     }
-    public void borrowItem(item item)
+    public void BorrowItem(item item)
     {
+        borrowedItems.Add(item);
     }
-    public void returnItem(item item)
+    public void ReturnItem(item item)
     {
+        borrowedItems.Remove(item);
     }
     
 }

@@ -31,11 +31,11 @@ public class item
         this.title = title;
         this.isBorrowed = false;
     }
-    public void borrow()
+    public void Borrow()
     {
         this.isBorrowed = true;
     }
-    public void returnItem()
+    public void ReturnItem()
     {
         this.isBorrowed = false;
     }
