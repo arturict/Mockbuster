@@ -1,38 +1,95 @@
-﻿namespace Mockbuster;
+﻿using System.Runtime.InteropServices.JavaScript;
+
+namespace Mockbuster;
 
 class Program
 {
     static void Main(string[] args)
     {
         //TODO: Implement the main loop of the program
+        Console.WriteLine("Welcome to Mockbuster!");
+        Console.WriteLine("Please select an option:");
+        Console.WriteLine("Create (1), View (2), leave (l), Quit (q)");
+        string input = Console.ReadLine();
         library lib = new library();
-        List<item> items = new List<item>
-        {
-            new dvd("Shrek", "Andrew Adamson", 90),
-            new dvd("Cars", "John Lasseter", 117),
-            new dvd("The Matrix", "The Wachowskis", 136),
-            new book("The Subtle Art of Not Giving a F*ck", "Mark Manson", "978-0-06-245771-4"),
-            new book("The 48 Laws of Power", "Robert Greene", "978-0-14-028019-7"),
-            new book("Can't Hurt Me", "David Goggins", "978-1-9821-3344-5"),
-            new book("Atomic Habits", "James Clear", "978-0-525-65000-3")
-        };
-        user artur = new user("Artur");
-        user simon = new user("Simon");
-        user yannick = new user("Yannick");
-        user marvin = new user("Marvin");
-      
-        foreach (item item in items)
-        {
-            lib.AddItems(item);
+        switch (input)
+        { 
+            case "1":
+                Create();
+                break;
+            case "2":
+                
+                
+            
         }
-        artur.BorrowItem(lib.GetItemByTitle("The 48 Laws of Power"));
-        artur.BorrowItem(lib.GetItemByTitle("The Subtle Art of Not Giving a F*ck"));
-        simon.BorrowItem(lib.GetItemByTitle("Can't Hurt Me"));
-        yannick.BorrowItem(lib.GetItemByTitle("The Matrix"));
-        marvin.BorrowItem(lib.GetItemByTitle("Cars"));
-        
-        
-        
-        
+
+        public void Create()
+        {
+            Console.WriteLine("Please select an option:");
+            Console.WriteLine("Create Item (1), Create User (2), leave (l), Quit (q)");
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    Console.WriteLine("Please enter the title of the item:");
+                    string title = Console.ReadLine();
+                    item item = new item(title);
+                    lib.AddItems(item);
+                    break;
+                case "2":
+                    Console.WriteLine("Please enter the name of the user:");
+                    string name = Console.ReadLine();
+                    user user = new user(name);
+                    break;
+            }
+        }
+        public void createItem()
+        {
+            Console.WriteLine("Do you want to create a DVD (1) or a Book (2), leave (l), Quit (q)? ");
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    Console.WriteLine("Please enter the title of the DVD:");
+                    string title = Console.ReadLine();
+                    item item = new item(title);
+                    lib.AddItems(item);
+                    break;
+                case "2":
+                    Console.WriteLine("Please enter the title of the book:");
+                    string title = Console.ReadLine();
+                    Console.WriteLine("Please enter the author of the book:");
+                    string author = Console.ReadLine();
+                    Console.WriteLine("Please enter the ISBN of the book:");
+                    string isbn = Console.ReadLine();
+                    book book = new book(title, author, isbn);
+                    lib.AddItems(book);
+                    break;
+            }
+        }
+
+        public void view()
+        {
+            Console.WriteLine("Please select an option:");
+            Console.WriteLine("View Items (1), View Borrowed Items (2), View Available Items (3), leave (l), Quit (q)");
+            string viewInput = Console.ReadLine();
+            switch (viewInput)
+            {
+                case "1":
+                    lib.ViewItem();
+                    break;
+                case "2":
+                    lib.ViewBorrowedItems();
+                    break;
+                case "3":
+                    lib.ViewAvailableItems();
+                    break;
+            }
+        }
+
+
+
+
+
     }
 }
