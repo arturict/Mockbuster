@@ -12,12 +12,19 @@ class Program
         Console.WriteLine("Create (1), View (2), leave (l), Quit (q)");
         string input = Console.ReadLine();
         library lib = new library();
-        switch (input)
+        switch (input.toLowerCase())
         { 
             case "1":
                 Create();
                 break;
             case "2":
+                view();
+                break;
+            case "l":
+                break;
+            case "q":
+                Environment.Exit(0);
+                break;
                 
                 
             
