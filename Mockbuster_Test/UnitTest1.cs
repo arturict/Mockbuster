@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using Mockbuster;
 
 namespace Mockbuster_Test
 {
@@ -28,7 +29,7 @@ namespace Mockbuster_Test
             string returnedOutput = consoleOutput.ToString().Trim();
 
             // Assert
-            Assert.AreEqual("Digital Book", borrowedOutput); // Item should appear when borrowed
+            Assert.AreEqual($"{user.Name} borrowed {item.title}", borrowedOutput); // Item should appear when borrowed
             Assert.AreEqual("", returnedOutput); // List should be empty after returning
         }
     }
