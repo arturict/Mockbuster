@@ -2,6 +2,8 @@
 {
     internal class Program
     {
+        private static List<User> _users = new List<User>();
+
         private static Library _lib = new Library();
 
         static void Main(string[] args)
@@ -12,6 +14,7 @@
 
         private void Run()
         {
+            Console.WriteLine("Willkommen bei Mockbuster!");
             while (true)
             {
                 ShowMainMenu();
@@ -20,7 +23,7 @@
 
         private void ShowMainMenu()
         {
-            Console.WriteLine("Willkommen bei Mockbuster!");
+            
             Console.WriteLine("Bitte wähle eine Option:");
             Console.WriteLine("Create (1), View (2), leave (l), Quit (q)");
 
@@ -63,6 +66,10 @@
                     Console.WriteLine("Bitte gib den Namen des Users ein:");
                     string name = Console.ReadLine();
                     var user = new User(name);
+
+                    // Neu erstellten User in unsere lokale Liste einfügen
+                    _users.Add(user);
+
                     Console.WriteLine("User erfolgreich erstellt");
                     break;
                 case "l":
@@ -101,7 +108,7 @@
                     _lib.AddItems(newBook);
                     break;
                 case "l":
-                    // Zurück ins Create-Menü
+                    // Zurück ins Create Menü
                     break;
                 case "q":
                     Environment.Exit(0);
@@ -156,7 +163,7 @@
                     _lib.ViewAvailableItems();
                     break;
                 case "l":
-                    // Zurück ins View-Menü
+                    // Zurück ins View Menü
                     break;
                 case "q":
                     Environment.Exit(0);
@@ -176,7 +183,18 @@
             switch (viewInput)
             {
                 case "1":
-                    _lib.ViewUsers();
+                    if (_users.Count == 0)
+                    {
+                        Console.WriteLine("Keine User vorhanden.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Vorhandene User:");
+                        foreach (var usr in _users)
+                        {
+                            Console.WriteLine($"• {usr.Name}");
+                        }
+                    }
                     break;
                 case "2":
                     _lib.ViewBorrowedItems();
@@ -185,7 +203,7 @@
                     _lib.ViewAvailableItems();
                     break;
                 case "l":
-                    // Zurück ins View-Menü
+                    // Zurück ins View Menü
                     break;
                 case "q":
                     Environment.Exit(0);
