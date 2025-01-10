@@ -1,102 +1,199 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace Mockbuster;
-
-class Program
+﻿namespace Mockbuster
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        //TODO: Implement the main loop of the program
-        Console.WriteLine("Welcome to Mockbuster!");
-        Console.WriteLine("Please select an option:");
-        Console.WriteLine("Create (1), View (2), leave (l), Quit (q)");
-        string input = Console.ReadLine();
-        library lib = new library();
-        switch (input.toLowerCase())
-        { 
-            case "1":
-                Create();
-                break;
-            case "2":
-                view();
-                break;
-            case "l":
-                break;
-            case "q":
-                Environment.Exit(0);
-                break;
-                
-                
-            
+        private static Library _lib = new Library();
+
+        static void Main(string[] args)
+        {
+            var program = new Program();
+            program.Run();
         }
 
-        public void Create()
+        private void Run()
         {
-            Console.WriteLine("Please select an option:");
+            while (true)
+            {
+                ShowMainMenu();
+            }
+        }
+
+        private void ShowMainMenu()
+        {
+            Console.WriteLine("Willkommen bei Mockbuster!");
+            Console.WriteLine("Bitte wähle eine Option:");
+            Console.WriteLine("Create (1), View (2), leave (l), Quit (q)");
+
+            string input = Console.ReadLine()?.ToLower();
+
+            switch (input)
+            {
+                case "1":
+                    ShowCreateMenu();
+                    break;
+                case "2":
+                    ShowViewMenu();
+                    break;
+                case "l":
+                    // Zurück zum Hauptmenü
+                    ShowMainMenu();
+                    break;
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
+            }
+        }
+
+        private void ShowCreateMenu()
+        {
+            Console.WriteLine("Bitte wähle eine Option:");
             Console.WriteLine("Create Item (1), Create User (2), leave (l), Quit (q)");
-            string input = Console.ReadLine();
+
+            string input = Console.ReadLine()?.ToLower();
+
             switch (input)
             {
                 case "1":
-                    Console.WriteLine("Please enter the title of the item:");
-                    string title = Console.ReadLine();
-                    item item = new item(title);
-                    lib.AddItems(item);
+                    CreateItem();
                     break;
                 case "2":
-                    Console.WriteLine("Please enter the name of the user:");
+                    Console.WriteLine("Bitte gib den Namen des Users ein:");
                     string name = Console.ReadLine();
-                    user user = new user(name);
+                    var user = new User(name);
+                    Console.WriteLine("User erfolgreich erstellt");
                     break;
-            }
-        }
-        public void createItem()
-        {
-            Console.WriteLine("Do you want to create a DVD (1) or a Book (2), leave (l), Quit (q)? ");
-            string input = Console.ReadLine();
-            switch (input)
-            {
-                case "1":
-                    Console.WriteLine("Please enter the title of the DVD:");
-                    string title = Console.ReadLine();
-                    item item = new item(title);
-                    lib.AddItems(item);
+                case "l":
+                    // Zurück zum Hauptmenü
                     break;
-                case "2":
-                    Console.WriteLine("Please enter the title of the book:");
-                    string title = Console.ReadLine();
-                    Console.WriteLine("Please enter the author of the book:");
-                    string author = Console.ReadLine();
-                    Console.WriteLine("Please enter the ISBN of the book:");
-                    string isbn = Console.ReadLine();
-                    book book = new book(title, author, isbn);
-                    lib.AddItems(book);
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
                     break;
             }
         }
 
-        public void view()
+        private void CreateItem()
         {
-            Console.WriteLine("Please select an option:");
-            Console.WriteLine("View Items (1), View Borrowed Items (2), View Available Items (3), leave (l), Quit (q)");
-            string viewInput = Console.ReadLine();
+            Console.WriteLine("Möchtest du eine DVD (1) oder ein Buch (2) erstellen, leave (l), Quit (q)?");
+            string input = Console.ReadLine()?.ToLower();
+
+            switch (input)
+            {
+                case "1":
+                    Console.WriteLine("Bitte gib den Titel der DVD ein:");
+                    string dvdTitle = Console.ReadLine();
+                    var dvdItem = new Item(dvdTitle);
+                    _lib.AddItems(dvdItem);
+                    break;
+                case "2":
+                    Console.WriteLine("Bitte gib den Buchtitel ein:");
+                    string bookTitle = Console.ReadLine();
+                    Console.WriteLine("Bitte gib den Autor ein:");
+                    string author = Console.ReadLine();
+                    Console.WriteLine("Bitte gib die ISBN ein:");
+                    string isbn = Console.ReadLine();
+                    var newBook = new Book(bookTitle, author, isbn);
+                    _lib.AddItems(newBook);
+                    break;
+                case "l":
+                    // Zurück ins Create-Menü
+                    break;
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
+            }
+        }
+
+        private void ShowViewMenu()
+        {
+            Console.WriteLine("Bitte wähle eine Option:");
+            Console.WriteLine("View Items (1), View Users (2), leave (l), Quit (q)");
+            string viewInput = Console.ReadLine()?.ToLower();
+
             switch (viewInput)
             {
                 case "1":
-                    lib.ViewItem();
+                    ViewItems();
                     break;
                 case "2":
-                    lib.ViewBorrowedItems();
+                    ViewUsers();
                     break;
-                case "3":
-                    lib.ViewAvailableItems();
+                case "l":
+                    // Zurück zum Hauptmenü
+                    break;
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
                     break;
             }
         }
 
+        private void ViewItems()
+        {
+            Console.WriteLine("Bitte wähle eine Option:");
+            Console.WriteLine("View All Items (1), View Borrowed Items (2), View Available Items (3), leave (l), Quit (q)");
+            string viewInput = Console.ReadLine()?.ToLower();
 
+            switch (viewInput)
+            {
+                case "1":
+                    _lib.ViewItem();
+                    break;
+                case "2":
+                    _lib.ViewBorrowedItems();
+                    break;
+                case "3":
+                    _lib.ViewAvailableItems();
+                    break;
+                case "l":
+                    // Zurück ins View-Menü
+                    break;
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
+            }
+        }
 
+        private void ViewUsers()
+        {
+            Console.WriteLine("Bitte wähle eine Option:");
+            Console.WriteLine("View All Users (1), View Borrowed Items (2), View Available Items (3), leave (l), Quit (q)");
+            string viewInput = Console.ReadLine()?.ToLower();
 
-
+            switch (viewInput)
+            {
+                case "1":
+                    _lib.ViewUsers();
+                    break;
+                case "2":
+                    _lib.ViewBorrowedItems();
+                    break;
+                case "3":
+                    _lib.ViewAvailableItems();
+                    break;
+                case "l":
+                    // Zurück ins View-Menü
+                    break;
+                case "q":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Eingabe");
+                    break;
+            }
+        }
     }
 }
