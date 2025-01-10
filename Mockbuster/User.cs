@@ -1,6 +1,6 @@
-using Mockbuster;
+namespace Mockbuster;
 
-class User
+public class User // Changed to public
 {
     private string name { get; }
     private List<Item> borrowedItems;
@@ -39,8 +39,6 @@ class User
     public Item GetBorrowedItemByTitle(string title)
     {
         string lowerTitle = title.ToLower();
-        return borrowedItems
-            .FirstOrDefault(i => i.title.ToLower() == lowerTitle);
+        return borrowedItems.FirstOrDefault(i => i.title.ToLower() == lowerTitle);
     }
-
 }
