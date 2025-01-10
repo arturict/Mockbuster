@@ -1,10 +1,10 @@
 namespace Mockbuster;
 
-public class book : item
+public class Book : Item
 {
     string author;
     string isbn; // International Standard Book Number
-    public book(string title, string author, string isbn) : base(title)
+    public Book(string title, string author, string isbn) : base(title)
     {
         this.author = author;
         this.isbn = isbn;

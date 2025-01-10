@@ -6,6 +6,9 @@ public class UnitTest1
     [TestMethod]
     public void TestMethod1()
     {
-        //TODO: Implement Unit Tests for each class
+        Console.WriteLine(); //objectName.Borrow()
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
     }
 }
