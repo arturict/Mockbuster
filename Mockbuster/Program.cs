@@ -29,7 +29,7 @@ namespace Mockbuster
         private void ShowMainMenu()
         {
             Console.WriteLine("Bitte wähle eine Option:");
-            Console.WriteLine("Create (1), View (2), Login (u), leave (l), Quit (q)");
+            Console.WriteLine("Create (1), View (2), Login (u), leave (l), Clear(c) Quit (q)");
 
             string input = Console.ReadLine()?.ToLower();
 
@@ -47,6 +47,9 @@ namespace Mockbuster
                 case "l":
                     ShowMainMenu();
                     break;
+                case "c":
+                    Console.Clear();
+                    break;
                 case "q":
                     Environment.Exit(0);
                     break;
@@ -59,7 +62,7 @@ namespace Mockbuster
         private void ShowCreateMenu()
         {
             Console.WriteLine("Bitte wähle eine Option:");
-            Console.WriteLine("Create Item (1), Create User (2), leave (l), Quit (q)");
+            Console.WriteLine("Create Item (1), Create User (2), leave (l), Clear(c), Quit (q)");
 
             string input = Console.ReadLine()?.ToLower();
 
@@ -72,6 +75,9 @@ namespace Mockbuster
                     CreateUser();
                     break;
                 case "l":
+                    break;
+                case "c":
+                    Console.Clear();
                     break;
                 case "q":
                     Environment.Exit(0);
@@ -86,7 +92,7 @@ namespace Mockbuster
         {
             while (true)
             {
-                Console.WriteLine("Möchtest du eine DVD (1) oder ein Buch (2) erstellen, leave (l), Quit (q)?");
+                Console.WriteLine("Möchtest du eine DVD (1) oder ein Buch (2) erstellen, leave (l), Clear(c), Quit (q)?");
                 string input = Console.ReadLine()?.ToLower();
 
                 switch (input)
@@ -115,6 +121,9 @@ namespace Mockbuster
                         break;
                     case "l":
                         return;
+                    case "c":
+                        Console.Clear();
+                        break;
                     case "q":
                         Environment.Exit(0);
                         break;
@@ -178,7 +187,7 @@ namespace Mockbuster
             while (true)
             {
                 Console.WriteLine("Bitte wähle eine Option:");
-                Console.WriteLine("View All Items (1), View Borrowed Items (2), View Available Items (3), leave (l), Quit (q)");
+                Console.WriteLine("View All Items (1), View Borrowed Items (2), View Available Items (3), leave (l), Clear(c), Quit (q)");
                 string viewInput = Console.ReadLine()?.ToLower();
 
                 switch (viewInput)
@@ -194,6 +203,9 @@ namespace Mockbuster
                         break;
                     case "l":
                         return;
+                    case "c":
+                        Console.Clear();
+                        break;
                     case "q":
                         Environment.Exit(0);
                         break;

@@ -3,6 +3,7 @@ namespace Mockbuster;
 public class User // Changed to public
 {
     public string Name { get; private set; }
+
     private List<Item> borrowedItems;
 
     public User(string name)
