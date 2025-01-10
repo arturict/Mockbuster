@@ -1,38 +1,38 @@
 namespace Mockbuster;
 
-public class library
+public class Library
 {
-    List<item> _items = new List<item>();
-    public void AddItems(item item)
+    List<Item> _items = new List<Item>();
+    public void AddItems(Item item)
     {
         _items.Add(item);
     }
-    public void RemoveItems(item item)
+    public void RemoveItems(Item item)
     {
         _items.Remove(item);
     }
     public void ViewItem()
     {
-        foreach (item item in _items)
+        foreach (Item item in _items)
         {
             Console.WriteLine(item.title);
         }
     }
-    public void BorrowItem(item item)
+    public void BorrowItem(Item item)
     {
         item.isBorrowed = true;
     }
-    public item GetItemByTitle(string title)
+    public Item GetItemByTitle(string title)
     {
         return _items.FirstOrDefault(i => i.title == title);
     }
-    public void ReturnItem(item item)
+    public void ReturnItem(Item item)
     {
         item.isBorrowed = false;
     }
     public void ViewBorrowedItems()
     {
-        foreach (item item in _items)
+        foreach (Item item in _items)
         {
             if (item.isBorrowed)
             {
@@ -42,7 +42,7 @@ public class library
     }
     public void ViewAvailableItems()
     {
-        foreach (item item in _items)
+        foreach (Item item in _items)
         {
             if (!item.isBorrowed)
             {

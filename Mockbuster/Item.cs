@@ -1,6 +1,6 @@
 namespace Mockbuster;
 
-public class item
+public class Item
 {
     string _title;
     bool _isBorrowed;
@@ -26,7 +26,7 @@ public class item
             _isBorrowed = value;
         }
     }
-    public item(string title)
+    public Item(string title)
     {
         this.title = title;
         this.isBorrowed = false;
@@ -34,9 +34,11 @@ public class item
     public void Borrow()
     {
         this.isBorrowed = true;
+        Console.WriteLine($"Borrowing {title}");
     }
     public void ReturnItem()
     {
         this.isBorrowed = false;
+        Console.WriteLine($"Returning {title}");
     }
 }

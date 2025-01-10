@@ -1,10 +1,10 @@
 namespace Mockbuster;
 
-public class dvd : item
+public class Dvd : Item
 {
     string director;
     int duration; // in minutes
-    public dvd(string title, string director, int duration) : base(title)
+    public Dvd(string title, string director, int duration) : base(title)
     {
         this.director = director;
         this.duration = duration;
