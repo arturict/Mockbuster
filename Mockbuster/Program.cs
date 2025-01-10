@@ -99,7 +99,7 @@ namespace Mockbuster
                         Console.WriteLine("Bitte gib die Dauer (in Minuten) ein:");
                         int duration = int.Parse(Console.ReadLine() ?? "0");
                         var dvdItem = new Dvd(dvdTitle, director, duration);
-                        _lib.AddItems(dvdItem);
+                        _lib.AddItem(dvdItem);
                         Console.WriteLine("DVD erfolgreich erstellt.");
                         break;
                     case "2":
@@ -110,7 +110,7 @@ namespace Mockbuster
                         Console.WriteLine("Bitte gib die ISBN ein:");
                         string isbn = Console.ReadLine();
                         var newBook = new Book(bookTitle, author, isbn);
-                        _lib.AddItems(newBook);
+                        _lib.AddItem(newBook);
                         Console.WriteLine("Buch erfolgreich erstellt.");
                         break;
                     case "l":

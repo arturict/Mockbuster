@@ -2,30 +2,26 @@ using Mockbuster;
 
 class User
 {
-    private string name { get; }
+    public string Name { get; private set; }
     private List<Item> borrowedItems;
 
     public User(string name)
     {
-        this.name = name;
+        this.Name = name;
         this.borrowedItems = new List<Item>();
     }
 
-    public string Name
-    {
-        get { return name; }
-    }
 
     public void BorrowItem(Item item)
     {
         borrowedItems.Add(item);
-        Console.WriteLine($"{name} borrowed {item.title}");
+        Console.WriteLine($"{Name} borrowed {item.title}");
     }
 
     public void ReturnItem(Item item)
     {
         borrowedItems.Remove(item);
-        Console.WriteLine($"{name} returned {item.title}");
+        Console.WriteLine($"{Name} returned {item.title}");
     }
 
     public void ViewBorrowedItems()

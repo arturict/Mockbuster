@@ -4,7 +4,7 @@ public class Library
 {
     List<Item> _items = new List<Item>();
 
-    public void AddItems(Item item)
+    public void AddItem(Item item)
     {
         _items.Add(item);
     }
@@ -59,7 +59,7 @@ public class Library
         }
     }
 
-    // Neue Methoden, damit dein Programm vollständig läuft
+    // Neue Methoden, damit dein Programm vollstï¿½ndig lï¿½uft
     public List<Item> GetAvailableItems()
     {
         return _items.Where(i => !i.isBorrowed).ToList();
