@@ -1,10 +1,14 @@
-﻿namespace Mockbuster
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Mockbuster
 {
     internal class Program
     {
         private static List<User> _users = new List<User>();
         private static Library _lib = new Library();
-        
+
         private User _loggedInUser;
 
         static void Main(string[] args)
@@ -264,7 +268,7 @@
 
             Console.WriteLine("Gib bitte den Usernamen ein, um dich einzuloggen:");
             string username = Console.ReadLine();
-            
+
             var foundUser = _users.Find(u => u.Name.Equals(username, StringComparison.OrdinalIgnoreCase));
             if (foundUser == null)
             {
@@ -304,7 +308,7 @@
                         Console.WriteLine("Ungültige Eingabe");
                         break;
                 }
-                
+
                 if (_loggedInUser == null) break;
             }
         }
@@ -312,7 +316,7 @@
         private void BorrowItemForUser(User user)
         {
             // Show all available items before borrowing
-            var availableItems = _lib.GetAvailableItems(); 
+            var availableItems = _lib.GetAvailableItems();
             if (availableItems.Count == 0)
             {
                 Console.WriteLine("Es sind keine Items verfügbar.");
@@ -321,7 +325,7 @@
             Console.WriteLine("Verfügbare Items:");
             foreach (var item in availableItems)
             {
-                Console.WriteLine($"- {item.Title}");
+                Console.WriteLine($"- {item.title}");
             }
 
             Console.WriteLine("Welches Item möchtest du ausleihen? (Titel eingeben oder 'abbrechen')");
